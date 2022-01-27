@@ -1,0 +1,12 @@
+h1{
+    font-size: xx-large;
+    font-variant: small-caps;
+    background-color: black;
+    font-style: italic;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+div{
+    font-size: medium;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
