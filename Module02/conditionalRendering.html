@@ -1,0 +1,31 @@
+<template>
+
+    <lightning-card title = "Permanent Address">
+        <div style = "color: black;"> Enter permenant address as govt id proof </div>
+        <lightning-input label="Address line 1" name="txtInput1" onchange={handlePerAddrLine1}></lightning-input>
+        <lightning-input label="Address line 2" name="txtInput2" onchange={handlePerAddrLine2}></lightning-input>
+        <lightning-input label="Landmark" name="txtInput3" onchange={handlePerAddrLandmark}></lightning-input>
+        <lightning-input label="Zipcode" name="txtInput4" onchange={handlePerAddrZipCode}></lightning-input>
+    </lightning-card>
+
+    <lightning-card title="Current Address">
+
+        <lightning-input label="Same as permenant address" type="checkbox" onchange={handleChange}></lightning-input>
+
+        <template if:true={isAddressSame}>
+            <lightning-input label="Address line 1" name="txtInput1" value={currentAddrLine1}></lightning-input>
+            <lightning-input label="Address line 2" name="txtInput2" value={currentAddrLine2}></lightning-input>
+            <lightning-input label="Landmark" name="txtInput3" value={currentAddrLandmark}></lightning-input>
+            <lightning-input label="Zipcode" name="txtInput4" value={currentAddrZipCode}></lightning-input>
+        </template>
+
+        <template if:false={isAddressSame}>
+            <lightning-input label="Address line 1" name="txtInput1" value={diffCurrentAddrLine1}></lightning-input>
+            <lightning-input label="Address line 2" name="txtInput2" value={diffCurrentAddrLine2}></lightning-input>
+            <lightning-input label="Landmark" name="txtInput3" value={diffCurrentAddrLandmark}></lightning-input>
+            <lightning-input label="Zipcode" name="txtInput4" value={diffCurrentAddrZipCode}></lightning-input>
+        </template>
+
+    </lightning-card>
+    
+</template>
