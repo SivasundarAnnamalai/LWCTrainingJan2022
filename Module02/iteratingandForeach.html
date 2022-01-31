@@ -1,0 +1,53 @@
+<template>
+    <lightning-card title="For:Each Demo" icon-name="standard:contact">
+
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered" id="Table1">
+            <thead>
+                <tr class="slds-line-height_reset">
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="Index">Index</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="ID">ID</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="Name">Name</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="Email">Email</div>
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <template for:each={dummyContacts} for:item ="contact" for:index="index">
+                    <tr class="slds-hint-parent" key={contact.id}>
+                        <td data-label="Index">
+                            <div class="slds-truncate">{index}</div>
+                        </td>
+                        <td data-label="ID">
+                            <div class="slds-truncate">{contact.id}</div>
+                        </td>
+                        <td data-label="Name">
+                            <div class="slds-truncate">{contact.name}</div>
+                        </td>
+                        <td data-label="Email">
+                            <div class="slds-truncate">{contact.email}</div>
+                        </td>
+                    </tr>           
+                </template>
+            </tbody>
+        </table>
+    </lightning-card>
+
+</br>
+</br>
+
+    <lightning-card title="Iterator Demo" icon-name="standard:contact">
+        <hr style="width:50%" size="3" color="black"/>
+        <template iterator:con={dummyContacts}>  
+            <div key={con.value.id}>{con.value.name}  -  {con.value.email}</div>
+        </template>
+        <hr style="width:50%" size="3" color="black"/>
+    </lightning-card>
+</template>
