@@ -1,0 +1,25 @@
+<template>
+    <div class="slds-box">
+        <lightning-card title="Button Selector" icon-name="standard:actions_and_buttons">
+            <div class="slds-align_absolute-center" onbuttonclick={handleChild}>
+                <table>
+                    <tr>
+                        <td>Button One: {buttonOneSelection}</td>
+                        <td>Button Two: {buttonTwoSelection}</td>
+                        <td>Button Three: {buttonThreeSelection}</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td><c-button-one-component></c-button-one-component></td>
+                        <td><c-button-two-component></c-button-two-component></td>
+                        <td><c-button-three-component></c-button-three-component></td>
+                    </tr>
+                </table>
+            </div>
+        </lightning-card>  
+    </div>
+</template>
