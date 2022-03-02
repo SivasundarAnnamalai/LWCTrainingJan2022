@@ -1,0 +1,32 @@
+<template>
+    <div class="slds-box slds-m-around_x-small">
+        <lightning-card title="Search Opportunities" icon-name="standard:opportunity">
+            <lightning-input type="search" variant="standard" name="searchOpp" placeholder="Type Opportunity Name here..."
+                class="slds-m-around_x-small" onchange={handleSearch}>
+            </lightning-input>
+
+            <template if:true={search} for:each={opportunities} for:item="opp" class="slds-m-around_x-small">
+                <a key={opp.Id}>
+                    <c-search-component onselected={handleSelect1} record={opp}></c-search-component>
+                </a>
+            </template>
+        </lightning-card>
+
+        <div if:true={selectedOpp}>
+            <lightning-card variant="Narrow" title={selectedOpp.Name} icon-name="standard:opportunity">
+                <div>
+                    <lightning-progress-indicator current-step={currentState} type="path" variant="base"
+                        class="slds-m-around_x-small">
+                        <template for:each={steps} for:item="step">
+                            <lightning-progress-step label={step.label} value={step.value} key={step.label}>
+                            </lightning-progress-step>
+                        </template>
+                    </lightning-progress-indicator>
+                </div>
+                <lightning-record-form record-id={selectedOpp.Id} object-api-name="Opportunity" layout-type="Full"
+                    mode="view">
+                </lightning-record-form>
+            </lightning-card>
+        </div>
+    </div>
+</template>
