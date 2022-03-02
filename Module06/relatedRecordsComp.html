@@ -1,0 +1,50 @@
+<template>
+    <lightning-card variant="Narrow" title="Enter Account To Search" icon-name="standard:account">
+        <div slot="actions">
+            <lightning-button variant="brand" label="Reset"  onclick={handleReset}></lightning-button>
+        </div>
+
+        <div class="slds-p-horizontal_small">
+            <lightning-input type="search" variant="standard" name="searchAccount" label="Account"
+                placeholder="Type Account Name here..." onchange={handleSearch} value={searchValue}>
+            </lightning-input>
+
+            <template if:false={recordId} for:each={accounts.data} for:item="acc">
+                <c-search-comp key={acc.Id} onselected={handleOnSelect} record={acc}></c-search-comp>
+            </template>
+
+            <div if:true={recordId}>
+                <lightning-card variant="Narrow" title={selectedAccount.Name} icon-name="standard:account">
+                    
+                    <div class="slds-p-horizontal_small">
+                        <lightning-card variant="Narrow" title="Account Related Contacts" icon-name="standard:contact">
+                            <div class="slds-p-horizontal_small">
+                                <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                                    <thead>
+                                        <tr class="slds-line-height_reset">
+                                            <th scope="col"> Name </th>
+                                            <th scope="col"> Account Name </th>
+                                            <th scope="col"> Email </th>
+                                            <th scope="col"> Department </th>                                           
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <template if:true={contacts} for:each={contacts} for:item="con"
+                                            for:index="index">
+                                            <tr class="slds-hint-parent" key={con.Id}>
+                                                <th scope="row"> {con.FirstName} </th>
+                                                <th scope="row"> {con.Account.Name} </th>
+                                                <th scope="row"> {con.Email} </th>
+                                                <th scope="row"> {con.Department} </th>                                                
+                                            </tr>
+                                        </template>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </lightning-card>
+                    </div>
+                </lightning-card>
+            </div>
+        </div>
+    </lightning-card>
+</template>
