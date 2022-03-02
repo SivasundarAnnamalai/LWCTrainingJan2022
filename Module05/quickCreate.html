@@ -1,0 +1,135 @@
+<template>
+
+    <!-- Account Lightning card-->
+    <div class="slds-grid slds-wrap">
+        <div class="slds-col slds-size_4-of-12 slds-var-p-around_xxx-small">
+            <lightning-card variant="Narrow" title="Account" icon-name="standard:account">
+                <lightning-button slot="actions" label={accountButtonLabel} onclick={handleOnClickAccountButton}></lightning-button>
+                <p class="slds-p-horizontal_small">
+                    <template if:false={viewAllAccountFields}>
+                        <lightning-record-edit-form object-api-name="Account" onsuccess={handleSuccess} onsubmit={handleSubmit}>
+                            <lightning-messages></lightning-messages>
+                            <lightning-input-field field-name='Name'></lightning-input-field>
+                            <p class="slds-align_absolute-center">
+                                <lightning-button class="slds-m-top_small" label="Cancel" onclick={handleReset}>
+                                </lightning-button>
+                                <lightning-button class="slds-m-top_small" variant="brand" type="submit" label="Save">
+                                </lightning-button>
+                            </p>
+                        </lightning-record-edit-form>
+                    </template>
+                    <template if:true={viewAllAccountFields}>
+                        <lightning-record-edit-form object-api-name="Account" onsuccess={handleSuccess} onsubmit={handleSubmit}>
+                            <lightning-messages> </lightning-messages>
+                            <lightning-input-field field-name='Name'></lightning-input-field>
+                            <lightning-input-field field-name='Rating'></lightning-input-field>
+                            <lightning-input-field field-name='ParentId'></lightning-input-field>
+                            <lightning-input-field field-name='Industry'></lightning-input-field>
+                            <lightning-input-field field-name='BillingAddress'></lightning-input-field>
+                            <lightning-input-field field-name='Active__c'></lightning-input-field>
+                            <lightning-input-field field-name='Site'></lightning-input-field>
+                            <p class="slds-align_absolute-center">
+                                <lightning-button class="slds-m-top_small" label="Cancel" onclick={handleReset}>
+                                </lightning-button>
+                                <lightning-button class="slds-m-top_small" variant="brand" type="submit" label="Save">
+                                </lightning-button>
+                            </p>
+                        </lightning-record-edit-form>
+                    </template>
+                </p>
+            </lightning-card>
+        </div>
+
+        <!-- Contact Lightning card-->
+        <div class="slds-col slds-size_4-of-12 slds-var-p-around_xxx-small">
+            <lightning-card variant="Narrow" title="Contact" icon-name="standard:contact">
+                <lightning-button slot="actions" label={contactButtonLabel} onclick={handleOnClickContactButton}></lightning-button>
+                <p class="slds-p-horizontal_small">
+                    <template if:false={viewAllContactFields}>
+                        <lightning-record-edit-form object-api-name="Contact" onsuccess={handleSuccess}
+                            onsubmit={handleSubmit}>
+                            <lightning-messages>
+                            </lightning-messages>
+                            <lightning-input-field field-name='FirstName'></lightning-input-field>
+                            <lightning-input-field field-name='LastName'></lightning-input-field>
+                            <lightning-input-field field-name='Email'></lightning-input-field>
+                            <p class="slds-align_absolute-center">
+                                <lightning-button class="slds-m-top_small" label="Cancel" onclick={handleReset}>
+                                </lightning-button>
+                                <lightning-button class="slds-m-top_small" variant="brand" type="submit" label="Save">
+                                </lightning-button>
+                            </p>
+                        </lightning-record-edit-form>
+                    </template>
+                    <template if:true={viewAllContactFields}>
+                        <lightning-record-edit-form object-api-name="Contact" onsuccess={handleSuccess} onsubmit={handleSubmit}>
+                            <lightning-messages> </lightning-messages>
+                            <lightning-input-field field-name='AccountId'></lightning-input-field>
+                            <lightning-input-field field-name='FirstName'></lightning-input-field>
+                            <lightning-input-field field-name='LastName'></lightning-input-field>
+                            <lightning-input-field field-name='Email'></lightning-input-field>
+                            <lightning-input-field field-name='DoNotCall'></lightning-input-field>
+                            <lightning-input-field field-name='MobilePhone'></lightning-input-field>
+                            <lightning-input-field field-name='MailingAddress'></lightning-input-field>
+                            <lightning-input-field field-name='LeadSource'></lightning-input-field>
+                            <p class="slds-align_absolute-center">
+                                <lightning-button class="slds-m-top_small" label="Cancel" onclick={handleReset}>
+                                </lightning-button>
+                                <lightning-button class="slds-m-top_small" variant="brand" type="submit" label="Save">
+                                </lightning-button>
+                            </p>
+                        </lightning-record-edit-form>
+                    </template>
+                </p>
+            </lightning-card>
+        </div>
+
+        <!-- Opportunity Lightning card-->
+        <div class="slds-col slds-size_4-of-12 slds-var-p-around_xxx-small">
+            <lightning-card variant="Narrow" title="Opportunity" icon-name="standard:opportunity">
+                <lightning-button slot="actions" label={opportunityButtonLabel} onclick={handleOppFields}></lightning-button>
+                <p class="slds-p-horizontal_small">
+                    <template if:false={viewAllOpportunityFields}>
+                        <lightning-record-edit-form object-api-name="Opportunity" onsuccess={handleSuccess}
+                            onsubmit={handleSubmit}>
+                            <lightning-messages>
+                            </lightning-messages>
+                            <lightning-input-field field-name='Name'></lightning-input-field>
+                            <lightning-input-field field-name='ContactId'></lightning-input-field>
+                            <lightning-input-field field-name='CloseDate'></lightning-input-field>
+                            <lightning-input-field field-name='Amount'></lightning-input-field>
+                            <lightning-input-field field-name='StageName'></lightning-input-field>
+                            <p class="slds-align_absolute-center">
+                                <lightning-button class="slds-m-top_small" label="Cancel" onclick={handleReset}>
+                                </lightning-button>
+                                <lightning-button class="slds-m-top_small" variant="brand" type="submit" label="Save">
+                                </lightning-button>
+                            </p>
+                        </lightning-record-edit-form>
+                    </template>
+                    <template if:true={viewAllOpportunityFields}>
+                        <lightning-record-edit-form object-api-name="Opportunity" onsuccess={handleSuccess}
+                            onsubmit={handleSubmit}>
+                            <lightning-messages> </lightning-messages>
+                            <lightning-input-field field-name='Name'></lightning-input-field>
+                            <lightning-input-field field-name='ContactId'></lightning-input-field>
+                            <lightning-input-field field-name='CloseDate'></lightning-input-field>
+                            <lightning-input-field field-name='Amount'></lightning-input-field>
+                            <lightning-input-field field-name='StageName'></lightning-input-field>
+                            <lightning-input-field field-name='Type'></lightning-input-field>
+                            <lightning-input-field field-name='TotalOpportunityQuantity'></lightning-input-field>
+                            <lightning-input-field field-name='Probability'></lightning-input-field>
+                            <lightning-input-field field-name='CampaignId'></lightning-input-field>
+                            <p class="slds-align_absolute-center">
+                                <lightning-button class="slds-m-top_small" label="Cancel" onclick={handleReset}>
+                                </lightning-button>
+                                <lightning-button class="slds-m-top_small" variant="brand" type="submit" label="Save">
+                                </lightning-button>
+                            </p>
+                        </lightning-record-edit-form>
+                    </template>
+                </p>
+            </lightning-card>
+        </div>
+    </div>
+</template>
